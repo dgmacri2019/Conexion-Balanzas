@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Program.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,21 @@ namespace Program.Forms
 {
     public partial class MainForm : Form
     {
+        #region Attributes
+
+        private readonly ITcpClientHelper _tcpClientHelper;
+        private readonly ITcpServerHelper _tcpServerHelper;
+
+        #endregion
+
+
         private int childFormNumber = 0;
 
-        public MainForm()
+        public MainForm(ITcpClientHelper tcpClientHelper, ITcpServerHelper tcpServerHelper)
         {
             InitializeComponent();
+            _tcpClientHelper = tcpClientHelper;
+            _tcpServerHelper = tcpServerHelper;
         }
 
         private void ShowNewForm(object sender, EventArgs e)
